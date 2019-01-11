@@ -15,10 +15,11 @@ Cons:
 2. ```git clone https://github.com/CSEdelft/docker-dbs```
 3. ```cd docker-dbs```
 4. cd into a database directory
-5. ```make``` (wait a bit for the database to start)
+5. ```make``` (wait a minute for the database to start)
 6. ```make connect```
-7. Do your thing.
-8. ```make kill``` (shutdown the database and remove the image)
+7. (optional) ```make restore``` to load database data
+8. Do your thing.
+9. ```make kill``` (shutdown the database and remove the image)
 
 ## Known Issues
 

@@ -24,7 +24,7 @@ restore:
 		--password \
 		-X \
 		-c "CREATE DATABASE ecommerce" \
-	|| \
+	; \
 	pg_restore \
 		--host=localhost \
 		--port=5432 \
@@ -32,7 +32,7 @@ restore:
 		--password \
 		--dbname "ecommerce" \
 		--clean \
-		"./postgres_ecommerce.backup"
+		${ROOT_DIR}/postgres_ecommerce.backup
 
 .PHONY:connect
 connect:
