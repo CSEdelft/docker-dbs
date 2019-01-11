@@ -12,7 +12,7 @@ Cons:
 ## How to
 
 1. [Install Docker](https://docs.docker.com/install/)
-2. ```git clone ...```
+2. ```git clone https://github.com/CSEdelft/docker-dbs```
 3. ```cd docker-dbs```
 4. cd into a database directory
 5. ```make``` (wait a bit for the database to start)
