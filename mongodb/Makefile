@@ -5,12 +5,14 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 .PHONY:run
 run:
-	mkdir -p ${ROOT_DIR}/DATA
+	mkdir -p ${ROOT_DIR}/DATA/configdb
+	mkdir -p ${ROOT_DIR}/DATA/db
 	docker run \
 		--rm -d \
 		--name ${repo}-${name}-dev \
 		-p 27017:27017 \
-    --volume=${ROOT_DIR}/DATA:/data \
+    --volume=${ROOT_DIR}/DATA/configdb:/data/configdb \
+    --volume=${ROOT_DIR}/DATA/db:/data/db \
 		mongo:4.0.5-xenial
 
 .PHONY:restore
