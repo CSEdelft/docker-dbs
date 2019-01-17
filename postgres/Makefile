@@ -1,4 +1,4 @@
-repo=uni
+repo=tudelft
 name=postgres
 
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
