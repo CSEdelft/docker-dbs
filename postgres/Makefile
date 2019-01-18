@@ -47,6 +47,6 @@ connect:
 .PHONY:kill
 kill:
 	docker kill $$( \
-	docker ps -aq \
-	--filter="name=${repo}-${name}-dev" )
+		docker ps -aq \
+			--filter="name=${repo}-${name}-dev" )
 

@@ -8,9 +8,9 @@ run:
 	docker run \
 		--rm -d \
 		--name ${repo}-${name}-dev \
-    -p 7474:7474 -p 7687:7687 \
+		-p 7474:7474 -p 7687:7687 \
 		--volume=${ROOT_DIR}/DATA:/var/lib/neo4j/data \
-    --volume=${ROOT_DIR}/LOGS:/logs \
+		--volume=${ROOT_DIR}/LOGS:/logs \
 		--env NEO4J_AUTH=none \
 		-e NEO4J_dbms_active__database="ecommerce" \
 		neo4j:3.4.1
@@ -23,10 +23,10 @@ run-nodb:
 	docker run \
 		--rm -d \
 		--name ${repo}-${name}-dev \
-    -p 7474:7474 -p 7687:7687 \
+		-p 7474:7474 -p 7687:7687 \
 		--volume=${ROOT_DIR}/DATA:/var/lib/neo4j/data \
-    --volume=${ROOT_DIR}/LOGS:/logs \
-    --volume=${ROOT_DIR}/neo4j_ecommerce.dump:/backup.dump \
+		--volume=${ROOT_DIR}/LOGS:/logs \
+		--volume=${ROOT_DIR}/neo4j_ecommerce.dump:/backup.dump \
 		--env NEO4J_AUTH=none \
 		neo4j:3.4.1
 
@@ -39,15 +39,15 @@ restore:
 	docker exec \
 		$$(docker ps -aq --filter="name=${repo}-${name}-dev") \
 		neo4j-admin load \
-			--from=/backup.dump \
-			--database=ecommerce \
-			--force=true \
-	&& \
+		--from=/backup.dump \
+		--database=ecommerce \
+		--force=true \
+		&& \
 		echo "restore successfull - shutdown (make kill) and start normally (make)"
 
 .PHONY:kill
 kill:
 	docker kill $$( \
-	docker ps -aq \
-	--filter="name=${repo}-${name}-dev" )
+		docker ps -aq \
+			--filter="name=${repo}-${name}-dev" )
 

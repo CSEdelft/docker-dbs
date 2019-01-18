@@ -11,15 +11,17 @@ run:
 		--rm -d \
 		--name ${repo}-${name}-dev \
 		-p 27017:27017 \
-    --volume=${ROOT_DIR}/DATA/configdb:/data/configdb \
-    --volume=${ROOT_DIR}/DATA/db:/data/db \
+		--volume=${ROOT_DIR}/DATA/configdb:/data/configdb \
+		--volume=${ROOT_DIR}/DATA/db:/data/db \
 		mongo:4.0.5-xenial
 
 .PHONY:restore
 restore:
-	mongorestore --gzip \
+	mongorestore \
+		--gzip \
 		--archive=${ROOT_DIR}/mongo_ecommerce.agz
-	mongorestore --gzip \
+	mongorestore \
+		--gzip \
 		--archive=${ROOT_DIR}/mongo_ecommerceTabular.agz
 
 .PHONY:connect
@@ -29,6 +31,6 @@ connect:
 .PHONY:kill
 kill:
 	docker kill $$( \
-	docker ps -aq \
-	--filter="name=${repo}-${name}-dev" )
+		docker ps -aq \
+			--filter="name=${repo}-${name}-dev" )
 
